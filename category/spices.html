@@ -137,12 +137,14 @@
 		</div>
 	</section>
 
-<!--Product Section-->
+	<!--Product Section-->
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-9">
-					<div class="row">
+					<!-- Page 1 -->
+					<div class="row" id="page-1">
+						<!-- Product 1 -->
 						<div class="col-md-4 d-flex">
 							<div class="product ftco-animate">
 								<div class="img d-flex align-items-center justify-content-center"
@@ -281,6 +283,9 @@
 								</div>
 							</div>
 						</div>
+					</div>
+					<div class="row d-none" id="page-2">
+						<!-- Product 7 -->
 						<div class="col-md-4 d-flex">
 							<div class="product ftco-animate">
 								<div class="img d-flex align-items-center justify-content-center"
@@ -413,6 +418,9 @@
 								</div>
 							</div>
 						</div>
+					</div>
+					<div class="row d-none" id="page-3">
+						<!-- Product 13 -->
 						<div class="col-md-4 d-flex">
 							<div class="product ftco-animate">
 								<div class="img d-flex align-items-center justify-content-center"
@@ -545,6 +553,9 @@
 								</div>
 							</div>
 						</div>
+					</div>
+					<div class="row d-none" id="page-4">
+						<!-- Product 19 -->
 						<div class="col-md-4 d-flex">
 							<div class="product ftco-animate">
 								<div class="img d-flex align-items-center justify-content-center"
@@ -677,6 +688,9 @@
 								</div>
 							</div>
 						</div>
+					</div>
+					<div class="row d-none" id="page-5">
+						<!-- Product 25 -->
 						<div class="col-md-4 d-flex">
 							<div class="product ftco-animate">
 								<div class="img d-flex align-items-center justify-content-center"
@@ -809,6 +823,9 @@
 								</div>
 							</div>
 						</div>
+					</div>
+					<div class="row d-none" id="page-6">
+						<!-- Product 31 -->
 						<div class="col-md-4 d-flex">
 							<div class="product ftco-animate">
 								<div class="img d-flex align-items-center justify-content-center"
@@ -876,22 +893,31 @@
 							</div>
 						</div>
 					</div>
+
+					<!-- Pagination -->
 					<div class="row mt-5">
 						<div class="col text-center">
 							<div class="block-27">
 								<ul>
-									<li><a href="#">&lt;</a></li>
-									<li class="active"><span>1</span></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#">&gt;</a></li>
+									<li><a href="#" onclick="showPage('page-1')">1</a></li>
+									<li><a href="#" onclick="showPage('page-2')">2</a></li>
+									<li><a href="#" onclick="showPage('page-3')">3</a></li>
+									<li><a href="#" onclick="showPage('page-4')">4</a></li>
+									<li><a href="#" onclick="showPage('page-5')">5</a></li>
+									<li><a href="#" onclick="showPage('page-6')">6</a></li>
+									<!--<li><a href="#" onclick="showPage('page-7')">7</a></li>
+									<li><a href="#" onclick="showPage('page-8')">8</a></li>
+									<li><a href="#" onclick="showPage('page-9')">9</a></li>
+									<li><a href="#" onclick="showPage('page-10')">10</a></li>
+									<li><a href="#" onclick="showPage('page-11')">11</a></li>
+									<li><a href="#" onclick="showPage('page-12')">12</a></li>-->
+									<!-- Add more pages as necessary -->
 								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
+
 
 				<div class="col-md-3">
 					<div class="sidebar-box ftco-animate">
@@ -950,6 +976,18 @@
 			</div>
 		</div>
 	</section>
+
+	<script>
+		function showPage(pageId) {
+			// Hide all pages
+			document.querySelectorAll('.row[id^="page-"]').forEach(page => {
+				page.classList.add('d-none');
+			});
+
+			// Show the selected page
+			document.getElementById(pageId).classList.remove('d-none');
+		}
+	</script>
 
 	<footer class="ftco-footer">
 		<div class="container">
