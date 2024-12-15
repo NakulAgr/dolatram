@@ -233,23 +233,32 @@
           </div>
         </div>
       </div>
-      <div class="row mt-5">
-        <div class="col text-center">
-          <div class="block-27">
-            <ul>
-              <li><a href="#">&lt;</a></li>
-              <li class="active"><span>1</span></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">&gt;</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <!-- Pagination -->
+					<div class="row mt-5">
+						<div class="col text-center">
+							<div class="block-27">
+								<ul>
+									<li><a href="#" onclick="showPage('page-1')">1</a></li>
+									<!--<li><a href="#" onclick="showPage('page-2')">2</a></li>
+									<li><a href="#" onclick="showPage('page-3')">3</a></li>>-->
+									<!-- Add more pages as necessary -->
+								</ul>
+							</div>
+						</div>
+					</div>
     </div>
   </section>
+  <script>
+		function showPage(pageId) {
+			// Hide all pages
+			document.querySelectorAll('.row[id^="page-"]').forEach(page => {
+				page.classList.add('d-none');
+			});
+	
+			// Show the selected page
+			document.getElementById(pageId).classList.remove('d-none');
+		}
+	</script>
 
   <footer class="ftco-footer">
     <div class="container">
