@@ -171,9 +171,39 @@
 									<span class="category">Betel-Nuts</span>
 									<h2>Full Areca Nut - Puri Supari </h2>
 									<p class="mb-0">(पूरी सुपारी)</p>
+									 
+									<div class="quantity-section mt-3">
+										<!--<label for="quantity-nos" class="form-label">Quantity in Nos:</label>
+										<input type="number" id="quantity-nos" name="quantity-nos" value="0" min="0" placeholder="Enter quantity"
+											class="form-control mb-2">-->
+									
+										<label for="quantity-grams" class="form-label">Quantity in Grams:</label>
+										<input type="range" id="quantity-grams" name="quantity-grams" value="0" min="0" max="100000" step="10" class="form-range">
+										<input type="number" id="quantity-grams-input" name="quantity-grams-input" value="0" min="0" max="100000" step="10" class="form-control mt-2">
+										<p>Selected Grams: <span id="grams-display">0</span>g</p>
+									</div>
 								</div>
 							</div>
 						</div>
+						
+						<script>
+							// Update the displayed grams when the range input changes
+							const quantityGrams = document.getElementById('quantity-grams');
+							const gramsDisplay = document.getElementById('grams-display');
+							const quantityGramsInput = document.getElementById('quantity-grams-input');
+						
+							// Sync range slider with input box and displayed grams
+							quantityGrams.addEventListener('input', function () {
+								gramsDisplay.textContent = this.value;
+								quantityGramsInput.value = this.value;
+							});
+						
+							// Sync input box with range slider and displayed grams
+							quantityGramsInput.addEventListener('input', function () {
+								gramsDisplay.textContent = this.value;
+								quantityGrams.value = this.value;
+							});
+						</script>
 						<div class="col-md-4 d-flex">
 							<div class="product ftco-animate">
 								<div class="img d-flex align-items-center justify-content-center"
