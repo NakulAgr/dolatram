@@ -170,9 +170,36 @@
 									<span class="category">Ayurvedic Herbs</span>
 									<h2>Winter Cherry-Ashwagandha</h2>
 									<p class="mb-0">(अश्वगंधा)</p>
+									<div class="type-section mt-3">
+										<div class="checkbox-group d-flex flex-column align-items-start">
+											<label>
+												<input type="checkbox" id="powder" name="type" value="powder">
+												Powder
+											</label>
+											<input type="number" id="powder-quantity" name="powder-quantity" value="0" min="0" placeholder="Quantity (grams)" class="form-control mb-2" disabled>
+											
+											<label>
+												<input type="checkbox" id="raw" name="type" value="raw">
+												Raw 
+											</label>
+											<input type="number" id="raw-quantity" name="raw-quantity" value="0" min="0" placeholder="Quantity (grams)" class="form-control" disabled>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
+						<script>
+							// Enable/disable the quantity input fields based on checkbox selection
+							document.getElementById('powder').addEventListener('change', function () {
+								document.getElementById('powder-quantity').disabled = !this.checked;
+							});
+						
+							document.getElementById('raw').addEventListener('change', function () {
+								document.getElementById('raw-quantity').disabled = !this.checked;
+							});
+							
+						</script>
+
 						<!-- Product 2 -->
 						<div class="col-md-4 d-flex">
 							<div class="product ftco-animate">
@@ -1778,7 +1805,7 @@
 						</div>
 					</div>
 	
-					<div class="sidebar-box ftco-animate">
+					<!--<div class="sidebar-box ftco-animate">
 						<h3>Recent Blog</h3>
 						<div class="block-21 mb-4 d-flex">
 							<a class="blog-img mr-4" style="background-image: url(/images/image_1.jpg);"></a>
@@ -1813,7 +1840,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div>-->
 				</div>
 			</div>
 		</div>
