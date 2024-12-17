@@ -171,34 +171,103 @@
 									<h2>Winter Cherry-Ashwagandha</h2>
 									<p class="mb-0">(अश्वगंधा)</p>
 									<div class="type-section mt-3">
-										<div class="checkbox-group d-flex flex-column align-items-start">
+										<div class="checkbox-group d-flex flex-column align-items-center">
 											<label>
 												<input type="checkbox" id="powder" name="type" value="powder">
 												Powder
 											</label>
-											<input type="number" id="powder-quantity" name="powder-quantity" value="0" min="0" placeholder="Quantity (grams)" class="form-control mb-2" disabled>
-											
+											<div id="powder-quantity-container" style="display: none;">
+												<input type="number" id="powder-quantity" name="powder-quantity" value="0" min="0" placeholder="Quantity (grams)" class="form-control mb-2">
+											</div>
+						
 											<label>
 												<input type="checkbox" id="raw" name="type" value="raw">
-												Raw 
+												Raw
 											</label>
-											<input type="number" id="raw-quantity" name="raw-quantity" value="0" min="0" placeholder="Quantity (grams)" class="form-control" disabled>
+											<div id="raw-quantity-container" style="display: none;">
+												<input type="number" id="raw-quantity" name="raw-quantity" value="0" min="0" placeholder="Quantity (grams)" class="form-control">
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+						
 						<script>
-							// Enable/disable the quantity input fields based on checkbox selection
+							// Toggle visibility of the quantity input fields based on checkbox selection
 							document.getElementById('powder').addEventListener('change', function () {
-								document.getElementById('powder-quantity').disabled = !this.checked;
+								const container = document.getElementById('powder-quantity-container');
+								if (this.checked) {
+									container.style.display = 'block'; // Show quantity box
+								} else {
+									container.style.display = 'none'; // Hide quantity box
+									updateDisplay('powder-quantity', "0 grams"); // Reset display
+								}
 							});
 						
 							document.getElementById('raw').addEventListener('change', function () {
-								document.getElementById('raw-quantity').disabled = !this.checked;
+								const container = document.getElementById('raw-quantity-container');
+								if (this.checked) {
+									container.style.display = 'block'; // Show quantity box
+								} else {
+									container.style.display = 'none'; // Hide quantity box
+									updateDisplay('raw-quantity', "0 grams"); // Reset display
+								}
 							});
-							
+						
+							// Convert input quantities into kilograms or quintals
+							function convertQuantity(inputId, checkboxId) {
+								const input = document.getElementById(inputId);
+								const checkbox = document.getElementById(checkboxId);
+						
+								input.addEventListener('input', function () {
+									// Clear the display if the checkbox is unchecked or input is empty
+									if (!checkbox.checked || this.value === "") {
+										updateDisplay(inputId, "0 grams");
+										return;
+									}
+						
+									let value = parseInt(this.value);
+									if (isNaN(value) || value <= 0) {
+										updateDisplay(inputId, "0 grams");
+										return;
+									}
+						
+									let convertedValue;
+									if (value >= 100000) {
+										convertedValue = (value / 100000).toFixed(2) + " quintals";
+									} else if (value >= 1000) {
+										convertedValue = (value / 1000).toFixed(2) + " kg";
+									} else {
+										convertedValue = value + " grams";
+									}
+						
+									updateDisplay(inputId, convertedValue);
+								});
+							}
+						
+							// Function to update the converted value display
+							function updateDisplay(inputId, text) {
+								const displayId = `${inputId}-display`;
+								let displayElement = document.getElementById(displayId);
+						
+								if (!displayElement) {
+									displayElement = document.createElement('div');
+									displayElement.id = displayId;
+									displayElement.style.marginTop = "5px";
+									displayElement.style.fontSize = "14px";
+									displayElement.style.color = "#555";
+									document.getElementById(inputId).parentElement.appendChild(displayElement);
+								}
+						
+								displayElement.textContent = "Converted: " + text;
+							}
+						
+							// Apply conversion logic to both input fields
+							convertQuantity('powder-quantity', 'powder');
+							convertQuantity('raw-quantity', 'raw');
 						</script>
+						
 
 						<!-- Product 2 -->
 						<div class="col-md-4 d-flex">
