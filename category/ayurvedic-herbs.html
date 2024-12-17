@@ -39,7 +39,7 @@
 				<div class="col-md-6 d-flex justify-content-md-end">
 					<div class="social-media mr-4">
 						<p class="mb-0 d-flex">
-							<a href="https://api.whatsapp.com/send?phone=917984371588"
+							<a href="https://api.whatsapp.com/send?phone=917984371588&text=${encodeURIComponent(whatsappMessage)}"
 								class="d-flex align-items-center justify-content-center"><span class="fa fa-whatsapp"><i
 										class="sr-only">Whatsapp</i></span></a>
 							<a href="https://instagram.com/dolatram.stores"
@@ -179,6 +179,7 @@
 									<span class="category">Ayurvedic Herbs</span>
 									<h2>Winter Cherry-Ashwagandha</h2>
 									<p class="mb-0">(अश्वगंधा)</p>
+<<<<<<< Updated upstream
 									<!-- Rectangular toggle button -->
 									<div class="toggle-container text-center mt-2">
 										<button id="toggle-selection" class="btn btn-primary" style="
@@ -240,11 +241,30 @@
 														alt="Email" style="width: 16px; height: 16px" />
 												</a>
 											</div>
+=======
+									<div class="type-section mt-3">
+										<div class="checkbox-group d-flex flex-column align-items-start">
+											<label>
+												<input type="checkbox" id="powder" name="type" value="powder" onchange="toggleInput('powder')">
+												Powder
+											</label>
+											<input type="number" id="powder-quantity" name="powder-quantity" value="0" min="0" 
+												   placeholder="Quantity (grams)" class="form-control mb-2" disabled>
+											
+											<label>
+												<input type="checkbox" id="raw" name="type" value="raw" onchange="toggleInput('raw')">
+												Raw 
+											</label>
+											<input type="number" id="raw-quantity" name="raw-quantity" value="0" min="0" 
+												   placeholder="Quantity (grams)" class="form-control" disabled>
+>>>>>>> Stashed changes
 										</div>
+										<button class="btn btn-primary mt-3" onclick="submitData()">Submit</button>
 									</div>
 								</div>
 							</div>
 						</div>
+<<<<<<< Updated upstream
 
 						<style>
 							/* Custom checkbox container */
@@ -336,6 +356,61 @@
 							}
 						</style>
 
+=======
+						
+						<script>
+							// Enable/Disable input fields
+							function toggleInput(type) {
+								const inputField = document.getElementById(`${type}-quantity`);
+								inputField.disabled = !document.getElementById(type).checked;
+								if (inputField.disabled) inputField.value = 0;
+							}
+						
+							// Collect data and submit
+							function submitData() {
+								const powderChecked = document.getElementById('powder').checked;
+								const rawChecked = document.getElementById('raw').checked;
+								const powderQuantity = document.getElementById('powder-quantity').value;
+								const rawQuantity = document.getElementById('raw-quantity').value;
+						
+								const data = {
+									type: [],
+									quantities: {}
+								};
+						
+								if (powderChecked) {
+									data.type.push('powder');
+									data.quantities['powder'] = powderQuantity;
+								}
+								if (rawChecked) {
+									data.type.push('raw');
+									data.quantities['raw'] = rawQuantity;
+								}
+						
+								// Send data to the backend
+								fetch('/save-data', {
+									method: 'POST',
+									headers: {
+										'Content-Type': 'application/json',
+									},
+									body: JSON.stringify(data),
+								})
+								.then(response => response.json())
+								.then(result => {
+									if (result.success) {
+										// Construct WhatsApp URL
+										const whatsappMessage = `Order Details: ${JSON.stringify(data)}`;
+										const whatsappURL = `https://api.whatsapp.com/send?phone=YOUR_PHONE_NUMBER&text=${encodeURIComponent(whatsappMessage)}`;
+										window.location.href = whatsappURL;
+									} else {
+										alert('Failed to save data');
+									}
+								})
+								.catch(error => console.error('Error:', error));
+							}
+						</script>
+						
+>>>>>>> Stashed changes
 						<script>
 							// Toggle the visibility of the selection box
 							document
