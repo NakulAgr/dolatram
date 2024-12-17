@@ -182,12 +182,22 @@
 										<label for="quantity-nos" class="form-label">Quantity in Nos:</label>
 										<input type="number" id="quantity-nos" name="quantity-nos" value="0" min="0"
 											placeholder="Enter quantity" class="form-control mb-2" />
-
+									
+										<p>Selected Nos: <span id="nos-display">0</span></p>
+									
 										<!--<label for="quantity-grams" class="form-label">Quantity in Grams:</label>
 										<input type="range" id="quantity-grams" name="quantity-grams" value="0" min="0" max="100000" step="10"
 											class="form-range">
 										<p>Selected Grams: <span id="grams-display">0</span>g</p>-->
 									</div>
+									
+									<script>
+										document.getElementById("quantity-nos").addEventListener("input", function () {
+											// Update the displayed quantity
+											document.getElementById("nos-display").textContent = this.value;
+										});
+									</script>
+									
 									<!-- WhatsApp and Email Buttons Section -->
 									<div class="d-flex justify-content-center mt-3">
 										<!-- WhatsApp Circular Button -->
