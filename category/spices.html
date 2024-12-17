@@ -233,7 +233,7 @@
 						
 									let convertedValue;
 									if (value >= 100000) {
-										convertedValue = (value / 100000).toFixed(2) + " quintals";
+										convertedValue = (value / 100000).toFixed(2) + " quintal";
 									} else if (value >= 1000) {
 										convertedValue = (value / 1000).toFixed(2) + " kg";
 									} else {
@@ -258,7 +258,7 @@
 									document.getElementById(inputId).parentElement.appendChild(displayElement);
 								}
 						
-								displayElement.textContent = "Converted: " + text;
+								displayElement.textContent = "Selected weight: " + text;
 							}
 						
 							// Apply conversion logic to both input fields

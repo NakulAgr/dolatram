@@ -180,28 +180,45 @@
 										<label for="quantity-grams" class="form-label">Quantity in Grams:</label>
 										<input type="range" id="quantity-grams" name="quantity-grams" value="0" min="0" max="100000" step="10" class="form-range">
 										<input type="number" id="quantity-grams-input" name="quantity-grams-input" value="0" min="0" max="100000" step="10" class="form-control mt-2">
-										<p>Selected Grams: <span id="grams-display">0</span>g</p>
+										<p>Selected weight: <span id="grams-display">0</span></p>
 									</div>
 								</div>
 							</div>
 						</div>
 						
 						<script>
-							// Update the displayed grams when the range input changes
+							// DOM Elements
 							const quantityGrams = document.getElementById('quantity-grams');
 							const gramsDisplay = document.getElementById('grams-display');
 							const quantityGramsInput = document.getElementById('quantity-grams-input');
 						
-							// Sync range slider with input box and displayed grams
+							// Function to handle conversions
+							function updateDisplay(value) {
+								let displayValue;
+								if (!value || isNaN(value) || value < 0) {
+									displayValue = "0 grams"; // Reset to zero if input is invalid or empty
+								} else if (value >= 100000) {
+									displayValue = (value / 100000).toFixed(2) + " quintal";
+								} else if (value >= 1000) {
+									displayValue = (value / 1000).toFixed(2) + " kg";
+								} else {
+									displayValue = value + " grams";
+								}
+								gramsDisplay.textContent = displayValue;
+							}
+						
+							// Sync range slider with input box and update display
 							quantityGrams.addEventListener('input', function () {
-								gramsDisplay.textContent = this.value;
-								quantityGramsInput.value = this.value;
+								const value = parseInt(this.value, 10) || 0; // Default to zero if empty or invalid
+								quantityGramsInput.value = value;
+								updateDisplay(value);
 							});
 						
-							// Sync input box with range slider and displayed grams
+							// Sync input box with range slider and update display
 							quantityGramsInput.addEventListener('input', function () {
-								gramsDisplay.textContent = this.value;
-								quantityGrams.value = this.value;
+								const value = parseInt(this.value, 10) || 0; // Default to zero if empty or invalid
+								quantityGrams.value = value;
+								updateDisplay(value);
 							});
 						</script>
 						<div class="col-md-4 d-flex">
