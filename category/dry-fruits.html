@@ -143,72 +143,103 @@
 		</div>
 	</section>
 
-    <!-- Product Section -->    
-    <section class="ftco-section">    
-        <div class="container">    
-            <div class="row">    
-                <div class="col-md-9">    
-                    <!-- Page 1 -->    
-                    <div class="row" id="page-1">    
-                        <!-- Product 1 -->    
-                        <div class="col-md-4 d-flex">    
-                            <div class="product ftco-animate">    
-                                <div class="img d-flex align-items-center justify-content-center" 
-                                    style="background-image: url('your-product-image.jpg');">    
-                                </div>    
-                                <div class="text text-center">    
-                                    <h3>Product Name</h3>    
-                                    <p class="price"><span>$20.00</span></p>    
-                                    <input type="number" class="quantity" placeholder="Quantity" min="1">    
-                                    <div class="btn-group mt-3">    
-                                        <!-- WhatsApp Button -->    
-                                        <a href="#" class="btn btn-success whatsapp-btn">Send via WhatsApp</a>    
-                                        <!-- Email Button -->    
-                                        <a href="#" class="btn btn-primary email-btn">Send via Email</a>    
-                                    </div>    
-                                </div>    
-                            </div>    
-                        </div>    
-                    </div>    
-                </div>    
-            </div>    
-        </div>    
-    </section>
+	<!--Product Section-->
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9">
+					<!-- Page 1 -->
+					<div class="row" id="page-1">
+						<!-- Product 1 -->
+						<div class="col-md-4 d-flex">
+							<div class="product ftco-animate">
+								<div class="img d-flex align-items-center justify-content-center"
+									style="background-image: url(/images/dryfruits/almonds.jpg);">
+									<div class="desc">
+										<p class="meta-prod d-flex">
+											<a href="#" class="d-flex align-items-center justify-content-center"><span
+													class="flaticon-shopping-bag"></span></a>
+											<a href="#" class="d-flex align-items-center justify-content-center"><span
+													class="flaticon-heart"></span></a>
+											<a href="#" class="d-flex align-items-center justify-content-center"><span
+													class="flaticon-visibility"></span></a>
+										</p>
+									</div>
+								</div>
+								<div class="text text-center">
+									<!--<span class="sale">Sale</span>-->
+									<span class="category">Dry Fruits</span>
+									<h2>Almonds-Badaam</h2>
+									<p class="mb-0">(बादाम)</p>
+									<div class="quantity-section mt-3">
+										<!--<label for="quantity-nos" class="form-label">Quantity in Nos:</label>
+										<input type="number" id="quantity-nos" name="quantity-nos" value="0" min="0" placeholder="Enter quantity"
+											class="form-control mb-2">-->
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const whatsappBtns = document.querySelectorAll('.whatsapp-btn');
-            const emailBtns = document.querySelectorAll('.email-btn');
+										<label for="quantity-grams" class="form-label">Quantity in Grams:</label>
+										<input type="range" id="quantity-grams" name="quantity-grams" value="0" min="0"
+											max="100000" step="10" class="form-range">
+										<input type="number" id="quantity-grams-input" name="quantity-grams-input"
+											value="0" min="0" max="100000" step="10" class="form-control mt-2">
+										<p>Selected weight: <span id="grams-display">0</span></p>
+									</div>
+									<!-- WhatsApp and Email Buttons Section -->
+									<div class="d-flex justify-content-center mt-3">
+										<!-- WhatsApp Circular Button -->
+										<a href="https://wa.me/7984371588" target="_blank"
+											class="d-flex align-items-center justify-content-center mx-2"
+											style="width: 30px; height: 30px; border-radius: 50%; background-color: #25D366;">
+											<img src="https://img.icons8.com/ios-filled/20/ffffff/whatsapp.png"
+												alt="WhatsApp" style="width: 16px; height: 16px;">
+										</a>
+										<!-- Email Circular Button -->
+										<a href="mailto:dolatramstores@gmail.com"
+											class="d-flex align-items-center justify-content-center mx-2"
+											style="width: 30px; height: 30px; border-radius: 50%; background-color: #EA4335;">
+											<img src="https://img.icons8.com/ios-filled/20/ffffff/new-post.png"
+												alt="Email" style="width: 16px; height: 16px;">
+										</a>
+									</div>
 
-            whatsappBtns.forEach((btn, index) => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const product = btn.closest('.text').querySelector('h3').textContent;
-                    const price = btn.closest('.text').querySelector('.price span').textContent;
-                    const quantity = btn.closest('.text').querySelector('.quantity').value || 1;
+								</div>
+							</div>
+						</div>
 
-                    const message = `Hello, I am interested in purchasing:\n\nProduct: ${product}\nPrice: ${price}\nQuantity: ${quantity}`;
-                    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
-                    window.open(whatsappUrl, '_blank');
-                });
-            });
+						<script>
+							// DOM Elements
+							const quantityGrams = document.getElementById('quantity-grams');
+							const gramsDisplay = document.getElementById('grams-display');
+							const quantityGramsInput = document.getElementById('quantity-grams-input');
 
-            emailBtns.forEach((btn, index) => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const product = btn.closest('.text').querySelector('h3').textContent;
-                    const price = btn.closest('.text').querySelector('.price span').textContent;
-                    const quantity = btn.closest('.text').querySelector('.quantity').value || 1;
+							// Function to handle conversions
+							function updateDisplay(value) {
+								let displayValue;
+								if (!value || isNaN(value) || value < 0) {
+									displayValue = "0 grams"; // Reset to zero if input is invalid or empty
+								} else if (value >= 100000) {
+									displayValue = (value / 100000).toFixed(2) + " quintal";
+								} else if (value >= 1000) {
+									displayValue = (value / 1000).toFixed(2) + " kg";
+								} else {
+									displayValue = value + " grams";
+								}
+								gramsDisplay.textContent = displayValue;
+							}
 
-                    const subject = encodeURIComponent('Product Inquiry');
-                    const body = encodeURIComponent(`Hello, I am interested in purchasing:\n\nProduct: ${product}\nPrice: ${price}\nQuantity: ${quantity}`);
-                    const mailtoUrl = `mailto:?subject=${subject}&body=${body}`;
-                    window.open(mailtoUrl, '_blank');
-                });
-            });
-        });
-    </script>
+							// Sync range slider with input box and update display
+							quantityGrams.addEventListener('input', function () {
+								const value = parseInt(this.value, 10) || 0; // Default to zero if empty or invalid
+								quantityGramsInput.value = value;
+								updateDisplay(value);
+							});
 
+							// Sync input box with range slider and update display
+							quantityGramsInput.addEventListener('input', function () {
+								const value = parseInt(this.value, 10) || 0; // Default to zero if empty or invalid
+								quantityGrams.value = value;
+								updateDisplay(value);
+							});
+						</script>
 						<div class="col-md-4 d-flex">
 							<div class="product ftco-animate">
 								<div class="img d-flex align-items-center justify-content-center"
