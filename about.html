@@ -213,8 +213,41 @@
 	</section>
 
 	<section class="ftco-section ftco-no-pb">
+		<style>
+			@keyframes liveWallpaper {
+				0% {
+					background-position: 0% 50%;
+				}
+				50% {
+					background-position: 100% 50%;
+				}
+				100% {
+					background-position: 0% 50%;
+				}
+			}
+	
+			.ftco-section {
+				background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1, #fad0c4, #ff9a9e);
+				background-size: 600% 600%;
+				animation: liveWallpaper 15s ease infinite;
+			}
+	
+			/* Ensure text and content remain visible */
+			.text, .sort, .product {
+				position: relative;
+				z-index: 2;
+			}
+	
+			.ftco-section .img {
+				position: relative;
+				z-index: 1;
+			}
+		</style>
+		
 		<div class="container">
+			
 			<div class="row">
+				
 				<div class="col-lg-2 col-md-4 ">
 					<div class="sort w-100 text-center ftco-animate">
 						<a href="/category/ayurvedic-herbs.html"><div class="img" style="background-image: url(images/kind-1.jpg);"></div>
@@ -272,6 +305,8 @@
 
 			</div>
 		</div>
+		
+		
 	</section>
 
 

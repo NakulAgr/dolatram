@@ -182,6 +182,7 @@
                 </div>
             </div>
         </div>
+
     </section>
     <!-- HOW TO ORDER Section -->
     <section class="ftco-section services-section bg-light">
@@ -252,6 +253,7 @@
             </div>
         </div>
     </section>
+	
 
     <!-- Custom CSS -->
     <style>
@@ -328,92 +330,13 @@
             transition: all 0.3s ease-in-out;
         }
     </style>
-	    <!-- Include this before your existing code -->
-    <style>
-        /* Live Background */
-        body {
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Ensure it stays behind all content */
-            background: linear-gradient(145deg, #eaf7f5, #88d6b1);
-            animation: gradientShift 6s infinite alternate;
-        }
-
-        /* Gradient Animation */
-        @keyframes gradientShift {
-            0% {
-                background: linear-gradient(145deg, #eaf7f5, #88d6b1);
-            }
-            50% {
-                background: linear-gradient(145deg, #cceee6, #6fcfa2);
-            }
-            100% {
-                background: linear-gradient(145deg, #eaf7f5, #88d6b1);
-            }
-        }
-
-        /* Floating Particles */
-        .particle {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            animation: float 8s infinite ease-in-out;
-        }
-
-        /* Particle Animation */
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) translateX(0);
-                opacity: 0.5;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-20vh) translateX(50vw);
-                opacity: 0;
-            }
-        }
-    </style>
-
-    <div class="animated-bg"></div>
-
-    <!-- JavaScript for Dynamic Particles -->
-    <script>
-        // Generate floating particles
-        document.addEventListener('DOMContentLoaded', () => {
-            const particleCount = 20; // Adjust for more or fewer particles
-            const particleContainer = document.createElement('div');
-
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + 'vw';
-                particle.style.animationDelay = Math.random() * 5 + 's';
-                particle.style.animationDuration = 6 + Math.random() * 4 + 's';
-                particle.style.width = particle.style.height = Math.random() * 10 + 5 + 'px';
-                particleContainer.appendChild(particle);
-            }
-
-            document.body.appendChild(particleContainer);
-        });
-    </script>
-
+	
 	<section class="ftco-section ftco-no-pb">
+		
 		<div class="container">
+			
 			<div class="row">
+				
 				<div class="col-lg-2 col-md-4 ">
 					<div class="sort w-100 text-center ftco-animate">
 						<a href="/category/ayurvedic-herbs.html">
@@ -490,7 +413,7 @@
 			</div>
 		</div>
 	</section>
-
+	
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center pb-5">
