@@ -151,313 +151,285 @@
 		</div>
 	</section>
 
-    <!-- Product Section -->
-    <section class="ftco-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-9">
-                    <!-- Page 1 -->
-                    <div class="row" id="page-1">
-                        <!-- Product 1 -->
-                        <div class="col-md-4 d-flex">
-                            <div class="product ftco-animate">
-                                <div
-                                    class="img d-flex align-items-center justify-content-center"
-                                    style="background-image: url(/images/ayurvedic/ashwagandha.jpg);"
-                                >
-                                    <div class="desc">
-                                        <p class="meta-prod d-flex">
-                                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-                                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-                                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-                                        </p>
-                                    </div>
+<!-- Product Section -->
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <!-- Page 1 -->
+                <div class="row" id="page-1">
+                    <!-- Product 1 -->
+                    <div class="col-md-4 d-flex">
+                        <div class="product ftco-animate">
+                            <div class="img d-flex align-items-center justify-content-center" style="
+                                background-image: url(/images/ayurvedic/ashwagandha.jpg);
+                                ">
+                                <div class="desc">
+                                    <p class="meta-prod d-flex">
+                                        <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
+                                        <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
+                                        <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+                                    </p>
                                 </div>
-                                <div class="text text-center">
-                                    <span class="category">Ayurvedic Herbs</span>
-                                    <h2>Winter Cherry-Ashwagandha</h2>
-                                    <p class="mb-0">(अश्वगंधा)</p>
-                                    <!-- Rectangular toggle button -->
-                                    <div class="toggle-container text-center mt-2">
-                                        <button
-                                            id="toggle-selection"
-                                            class="btn btn-primary"
-                                            style="border-radius: 5px; padding: 8px 16px; font-size: 16px;"
-                                        >
-                                            &#9660; Select Quantity
-                                        </button>
-                                    </div>
-                                    <!-- Selection box -->
-                                    <div class="type-section mt-3" id="selection-box" style="display: none; text-align: left">
-                                        <div class="checkbox-group d-flex flex-column">
-                                            <!-- Powder Checkbox -->
-                                            <label class="custom-checkbox">
-                                                <input type="checkbox" id="powder" name="type" value="powder" />
-                                                <span class="checkbox-label">Powder</span>
-                                            </label>
-                                            <div id="powder-quantity-container" style="display: none">
-                                                <input
-                                                    type="number"
-                                                    id="powder-quantity"
-                                                    name="powder-quantity"
-                                                    value="0"
-                                                    min="0"
-                                                    placeholder="Quantity (grams)"
-                                                    class="form-control mb-2"
-                                                />
-                                                <div id="powder-quantity-display" class="converted-display"></div>
-                                            </div>
+                            </div>
+                            <div class="text text-center">
+                                <span class="category">Ayurvedic Herbs</span>
+                                <h2>Winter Cherry-Ashwagandha</h2>
+                                <p class="mb-0">(अश्वगंधा)</p>
+                                <!-- Rectangular toggle button -->
+                                <div class="toggle-container text-center mt-2">
+                                    <button id="toggle-selection" class="btn btn-primary" style="
+                                        border-radius: 5px;
+                                        padding: 8px 16px;
+                                        font-size: 16px;
+                                        ">
+                                        &#9660; Select Quantity
+                                    </button>
+                                </div>
+                                <!-- Selection box -->
+                                <div class="type-section mt-3" id="selection-box" style="display: none; text-align: left">
+                                    <div class="checkbox-group d-flex flex-column">
+                                        <!-- Powder Checkbox -->
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" id="powder" name="type" value="powder" />
+                                            <span class="checkbox-label">Powder</span>
+                                        </label>
+                                        <div id="powder-quantity-container" style="display: none">
+                                            <input type="number" id="powder-quantity" name="powder-quantity" value="0" min="0" placeholder="Quantity (grams)" class="form-control mb-2" />
+                                            <div id="powder-quantity-display" class="converted-display"></div>
+                                        </div>
 
-                                            <!-- Raw Checkbox -->
-                                            <label class="custom-checkbox">
-                                                <input type="checkbox" id="raw" name="type" value="raw" />
-                                                <span class="checkbox-label">Raw</span>
-                                            </label>
-                                            <div id="raw-quantity-container" style="display: none">
-                                                <input
-                                                    type="number"
-                                                    id="raw-quantity"
-                                                    name="raw-quantity"
-                                                    value="0"
-                                                    min="0"
-                                                    placeholder="Quantity (grams)"
-                                                    class="form-control"
-                                                />
-                                                <div id="raw-quantity-display" class="converted-display"></div>
-                                            </div>
-                                            <!-- WhatsApp and Email Buttons Section -->
-                                            <div class="d-flex justify-content-center mt-3">
-                                                <!-- WhatsApp Circular Button -->
-                                                <a
-                                                    id="whatsapp-button"
-                                                    href="#"
-                                                    target="_blank"
-                                                    class="d-flex align-items-center justify-content-center mx-2"
-                                                    style="width: 30px; height: 30px; border-radius: 50%; background-color: #25d366;"
-                                                >
-                                                    <img
-                                                        src="https://img.icons8.com/ios-filled/20/ffffff/whatsapp.png"
-                                                        alt="WhatsApp"
-                                                        style="width: 16px; height: 16px"
-                                                    />
-                                                </a>
-                                                <!-- Email Circular Button -->
-                                                <a
-                                                    id="email-button"
-                                                    href="#"
-                                                    class="d-flex align-items-center justify-content-center mx-2"
-                                                    style="width: 30px; height: 30px; border-radius: 50%; background-color: #ea4335;"
-                                                >
-                                                    <img
-                                                        src="https://img.icons8.com/ios-filled/20/ffffff/new-post.png"
-                                                        alt="Email"
-                                                        style="width: 16px; height: 16px"
-                                                    />
-                                                </a>
-                                            </div>
+                                        <!-- Raw Checkbox -->
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" id="raw" name="type" value="raw" />
+                                            <span class="checkbox-label">Raw</span>
+                                        </label>
+                                        <div id="raw-quantity-container" style="display: none">
+                                            <input type="number" id="raw-quantity" name="raw-quantity" value="0" min="0" placeholder="Quantity (grams)" class="form-control" />
+                                            <div id="raw-quantity-display" class="converted-display"></div>
+                                        </div>
+                                        <!-- WhatsApp and Email Buttons Section -->
+                                        <div class="d-flex justify-content-center mt-3">
+                                            <!-- WhatsApp Circular Button -->
+                                            <a id="whatsapp-link" href="#" target="_blank" class="d-flex align-items-center justify-content-center mx-2" style="
+                                                width: 30px;
+                                                height: 30px;
+                                                border-radius: 50%;
+                                                background-color: #25d366;
+                                                ">
+                                                <img src="https://img.icons8.com/ios-filled/20/ffffff/whatsapp.png" alt="WhatsApp" style="width: 16px; height: 16px" />
+                                            </a>
+                                            <!-- Email Circular Button -->
+                                            <a id="email-link" href="#" class="d-flex align-items-center justify-content-center mx-2" style="
+                                                width: 30px;
+                                                height: 30px;
+                                                border-radius: 50%;
+                                                background-color: #ea4335;
+                                                ">
+                                                <img src="https://img.icons8.com/ios-filled/20/ffffff/new-post.png" alt="Email" style="width: 16px; height: 16px" />
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <style>
-                            /* Custom checkbox container */
-                            .custom-checkbox {
-                                position: relative;
-                                display: flex;
-                                align-items: center;
-                                margin: 10px 0;
-                                cursor: pointer;
-                                font-size: 16px;
-                                font-weight: 500;
-                                color: #333;
+                    <style>
+                        /* Custom checkbox container */
+                        .custom-checkbox {
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            margin: 10px 0;
+                            cursor: pointer;
+                            font-size: 16px;
+                            font-weight: 500;
+                            color: #333;
+                        }
+
+                        /* Hide the default checkbox */
+                        .custom-checkbox input {
+                            position: absolute;
+                            opacity: 0;
+                            cursor: pointer;
+                        }
+
+                        /* Custom checkbox design */
+                        .custom-checkbox span {
+                            position: relative;
+                            padding-left: 40px;
+                            display: inline-block;
+                            line-height: 24px;
+                        }
+
+                        /* Checkbox box */
+                        .custom-checkbox span::before {
+                            content: "";
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            width: 24px;
+                            height: 24px;
+                            background: #fff;
+                            border: 2px solid #aaa;
+                            border-radius: 6px;
+                            transition: all 0.3s;
+                        }
+
+                        /* Checkbox checkmark */
+                        .custom-checkbox span::after {
+                            content: "";
+                            position: absolute;
+                            left: 6px;
+                            top: 6px;
+                            width: 12px;
+                            height: 12px;
+                            background: #007bff;
+                            /* Checkbox fill color */
+                            border-radius: 4px;
+                            opacity: 0;
+                            transform: scale(0);
+                            transition: all 0.3s;
+                        }
+
+                        /* Change appearance when checked */
+                        .custom-checkbox input:checked~span::before {
+                            border-color: #007bff;
+                            background: #eaf4ff;
+                        }
+
+                        .custom-checkbox input:checked~span::after {
+                            opacity: 1;
+                            transform: scale(1);
+                        }
+
+                        /* Checkbox label hover effect */
+                        .custom-checkbox:hover span::before {
+                            border-color: #007bff;
+                        }
+
+                        /* Converted weight display styling */
+                        .converted-display {
+                            margin-top: 5px;
+                            font-size: 14px;
+                            color: #555;
+                        }
+
+                        /* Align selection box to the left */
+                        #selection-box {
+                            padding: 10px;
+                            border: 1px solid #ddd;
+                            border-radius: 5px;
+                            background-color: #f9f9f9;
+                        }
+                    </style>
+
+                    <script>
+                        // Toggle the visibility of the selection box
+                        document.getElementById("toggle-selection").addEventListener("click", function () {
+                            const selectionBox = document.getElementById("selection-box");
+                            if (selectionBox.style.display === "none" || selectionBox.style.display === "") {
+                                selectionBox.style.display = "block"; // Show selection box
+                                this.innerHTML = "&#9650; Hide Quantity"; // Change symbol to "up arrow" and text
+                            } else {
+                                selectionBox.style.display = "none"; // Hide selection box
+                                this.innerHTML = "&#9660; Select Quantity"; // Change symbol to "down arrow" and text
                             }
+                        });
 
-                            /* Hide the default checkbox */
-                            .custom-checkbox input {
-                                position: absolute;
-                                opacity: 0;
-                                cursor: pointer;
+                        // Toggle visibility of the quantity input fields based on checkbox selection
+                        document.getElementById("powder").addEventListener("change", function () {
+                            const container = document.getElementById("powder-quantity-container");
+                            if (this.checked) {
+                                container.style.display = "block"; // Show quantity box
+                            } else {
+                                container.style.display = "none"; // Hide quantity box
+                                updateDisplay("powder-quantity-display", "0 grams"); // Reset display
                             }
+                        });
 
-                            /* Custom checkbox design */
-                            .custom-checkbox span {
-                                position: relative;
-                                padding-left: 40px;
-                                display: inline-block;
-                                line-height: 24px;
+                        document.getElementById("raw").addEventListener("change", function () {
+                            const container = document.getElementById("raw-quantity-container");
+                            if (this.checked) {
+                                container.style.display = "block"; // Show quantity box
+                            } else {
+                                container.style.display = "none"; // Hide quantity box
+                                updateDisplay("raw-quantity-display", "0 grams"); // Reset display
                             }
+                        });
 
-                            /* Checkbox box */
-                            .custom-checkbox span::before {
-                                content: "";
-                                position: absolute;
-                                left: 0;
-                                top: 0;
-                                width: 24px;
-                                height: 24px;
-                                background: #fff;
-                                border: 2px solid #aaa;
-                                border-radius: 6px;
-                                transition: all 0.3s;
-                            }
+                        // Convert input quantities into kilograms or quintals
+                        function convertQuantity(inputId, displayId) {
+                            const input = document.getElementById(inputId);
+                            input.addEventListener("input", function () {
+                                const value = parseInt(this.value);
 
-                            /* Checkbox checkmark */
-                            .custom-checkbox span::after {
-                                content: "";
-                                position: absolute;
-                                left: 6px;
-                                top: 6px;
-                                width: 12px;
-                                height: 12px;
-                                background: #007bff;
-                                border-radius: 4px;
-                                opacity: 0;
-                                transform: scale(0);
-                                transition: all 0.3s;
-                            }
+                                if (isNaN(value) || value <= 0) {
+                                    updateDisplay(displayId, "0 grams");
+                                    return;
+                                }
 
-                            /* Change appearance when checked */
-                            .custom-checkbox input:checked ~ span::before {
-                                border-color: #007bff;
-                                background: #eaf4ff;
-                            }
-
-                            .custom-checkbox input:checked ~ span::after {
-                                opacity: 1;
-                                transform: scale(1);
-                            }
-
-                            /* Checkbox label hover effect */
-                            .custom-checkbox:hover span::before {
-                                border-color: #007bff;
-                            }
-
-                            /* Converted weight display styling */
-                            .converted-display {
-                                margin-top: 5px;
-                                font-size: 14px;
-                                color: #555;
-                            }
-
-                            /* Align selection box to the left */
-                            #selection-box {
-                                padding: 10px;
-                                border: 1px solid #ddd;
-                                border-radius: 5px;
-                                background-color: #f9f9f9;
-                            }
-                        </style>
-
-                        <script>
-                            // Toggle the visibility of the selection box
-                            document
-                                .getElementById("toggle-selection")
-                                .addEventListener("click", function () {
-                                    const selectionBox = document.getElementById("selection-box");
-                                    if (selectionBox.style.display === "none" || selectionBox.style.display === "") {
-                                        selectionBox.style.display = "block"; // Show selection box
-                                        this.innerHTML = "&#9650; Hide Quantity"; // Change symbol to "up arrow" and text
-                                    } else {
-                                        selectionBox.style.display = "none"; // Hide selection box
-                                        this.innerHTML = "&#9660; Select Quantity"; // Change symbol to "down arrow" and text
-                                    }
-                                });
-
-                            // Toggle visibility of the quantity input fields based on checkbox selection
-                            document.getElementById("powder").addEventListener("change", function () {
-                                const container = document.getElementById("powder-quantity-container");
-                                if (this.checked) {
-                                    container.style.display = "block"; // Show quantity box
+                                let convertedValue;
+                                if (value >= 100000) {
+                                    convertedValue = (value / 100000).toFixed(2) + " quintal";
+                                } else if (value >= 1000) {
+                                    convertedValue = (value / 1000).toFixed(2) + " kg";
                                 } else {
-                                    container.style.display = "none"; // Hide quantity box
-                                    updateDisplay("powder-quantity-display", "0 grams"); // Reset display
+                                    convertedValue = value + " grams";
                                 }
+
+                                updateDisplay(displayId, convertedValue);
                             });
+                        }
 
-                            document.getElementById("raw").addEventListener("change", function () {
-                                const container = document.getElementById("raw-quantity-container");
-                                if (this.checked) {
-                                    container.style.display = "block"; // Show quantity box
-                                } else {
-                                    container.style.display = "none"; // Hide quantity box
-                                    updateDisplay("raw-quantity-display", "0 grams"); // Reset display
-                                }
-                            });
+                        // Function to update the converted value display
+                        function updateDisplay(displayId, text) {
+                            document.getElementById(displayId).textContent = "Converted Weight: " + text;
+                        }
 
-                            // Convert input quantities into kilograms or quintals
-                            function convertQuantity(inputId, displayId) {
-                                const input = document.getElementById(inputId);
-                                input.addEventListener("input", function () {
-                                    const value = parseInt(this.value);
+                        // Generate the message for WhatsApp or Email
+                        function generateMessage() {
+                            const productCategory = document.querySelector('.category').textContent.trim();
+                            const productName = document.querySelector('h2').textContent.trim();
+                            const productSubtitle = document.querySelector('.mb-0').textContent.trim();
 
-                                    if (isNaN(value) || value <= 0) {
-                                        updateDisplay(displayId, "0 grams");
-                                        return;
-                                    }
+                            let message = `I am interested in purchasing the following product:\n\nCategory: ${productCategory}\nProduct: ${productName} ${productSubtitle}\n`;
 
-                                    let convertedValue;
-                                    if (value >= 100000) {
-                                        convertedValue = (value / 100000).toFixed(2) + " quintal";
-                                    } else if (value >= 1000) {
-                                        convertedValue = (value / 1000).toFixed(2) + " kg";
-                                    } else {
-                                        convertedValue = value + " grams";
-                                    }
+                            const powderQuantity = document.getElementById("powder-quantity").value;
+                            const rawQuantity = document.getElementById("raw-quantity").value;
 
-                                    updateDisplay(displayId, convertedValue);
-                                });
+                            if (document.getElementById("powder").checked && powderQuantity > 0) {
+                                message += `- Powder Quantity: ${powderQuantity} grams\n`;
+                            }
+                            if (document.getElementById("raw").checked && rawQuantity > 0) {
+                                message += `- Raw Quantity: ${rawQuantity} grams\n`;
                             }
 
-                            // Function to update the converted value display
-                            function updateDisplay(displayId, text) {
-                                document.getElementById(displayId).textContent = "Converted Weight: " + text;
+                            if (!document.getElementById("powder").checked && !document.getElementById("raw").checked) {
+                                message += `No quantity selected.`;
                             }
 
-                            // Apply conversion logic to both input fields
-                            convertQuantity("powder-quantity", "powder-quantity-display");
-                            convertQuantity("raw-quantity", "raw-quantity-display");
+                            return encodeURIComponent(message.trim());
+                        }
 
-                            // Generate message for WhatsApp and Email
-                            function generateMessage() {
-                                const productName = "Winter Cherry-Ashwagandha (अश्वगंधा)";
-                                let message = `I am interested in purchasing the following product:\n\nProduct: ${productName}\n`;
+                        // Attach generated message to WhatsApp and Email links
+                        document.getElementById("whatsapp-link").addEventListener("click", function () {
+                            const message = generateMessage();
+                            this.href = `https://wa.me/7984371588?text=${message}`;
+                        });
 
-                                const powderQuantity = document.getElementById("powder-quantity").value;
-                                const rawQuantity = document.getElementById("raw-quantity").value;
+                        document.getElementById("email-link").addEventListener("click", function () {
+                            const message = generateMessage();
+                            this.href = `mailto:dolatramstores@gmail.com?subject=Product Inquiry&body=${message}`;
+                        });
 
-                                if (document.getElementById("powder").checked && powderQuantity > 0) {
-                                    message += `- Powder Quantity: ${powderQuantity} grams\n`;
-                                }
-                                if (document.getElementById("raw").checked && rawQuantity > 0) {
-                                    message += `- Raw Quantity: ${rawQuantity} grams\n`;
-                                }
+                        // Apply conversion logic to both input fields
+                        convertQuantity("powder-quantity", "powder-quantity-display");
+                        convertQuantity("raw-quantity", "raw-quantity-display");
+                    </script>
 
-                                if (!document.getElementById("powder").checked && !document.getElementById("raw").checked) {
-                                    message += `No quantity selected.`;
-                                }
 
-                                return encodeURIComponent(message.trim());
-                            }
-
-                            // WhatsApp Button Click Event
-                            document.getElementById("whatsapp-button").addEventListener("click", function () {
-                                const phoneNumber = "7984371588"; // Your WhatsApp number
-                                const message = generateMessage();
-                                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
-                                this.href = whatsappUrl;
-                            });
-
-                            // Email Button Click Event
-                            document.getElementById("email-button").addEventListener("click", function () {
-                                const email = "dolatramstores@gmail.com"; // Your email
-                                const subject = "Product Inquiry: Winter Cherry-Ashwagandha";
-                                const body = generateMessage();
-                                const emailUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${body}`;
-                                this.href = emailUrl;
-                            });
-                        </script>
 
 
 						<!-- Product 2 -->
