@@ -421,7 +421,7 @@
 
                             // Generate message for WhatsApp and Email
                             function generateMessage() {
-                                const productName = "Alkanet - Ratanjot (रतंजोत)";
+                                const productName = "Winter Cherry-Ashwagandha (अश्वगंधा)";
                                 let message = `I am interested in purchasing the following product:\n\nProduct: ${productName}\n`;
 
                                 const powderQuantity = document.getElementById("powder-quantity").value;
@@ -452,7 +452,7 @@
                             // Email Button Click Event
                             document.getElementById("email-button").addEventListener("click", function () {
                                 const email = "dolatramstores@gmail.com"; // Your email
-                                const subject = "Product Inquiry: Alkanet - Ratanjot (रतंजोत)";
+                                const subject = "Product Inquiry: Winter Cherry-Ashwagandha";
                                 const body = generateMessage();
                                 const emailUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${body}`;
                                 this.href = emailUrl;
