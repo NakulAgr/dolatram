@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Winter Cherry - Ashwagandha (अश्वगंधा)",
+        "image": "/images/ayurvedic/ashwagandha.jpg",
+        "link": "/products/product-single.html"
+    },
+    {
+        "name": "Arjuna Bark - Arjun Chaal (अर्जुन छाल)",
+        "image": "/images/ayurvedic/arjunbark.jpg",
+        "link": "/products/arjuna_bark.html"
+    },
+    {
+        "name": "Wild Asparagus - Shatavari (शतावरी)",
+        "image": "/images/ayurvedic/shatavri.jpg",
+        "link": "/products/shatavari.html"
+    }
+]
