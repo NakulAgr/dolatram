@@ -22,6 +22,59 @@
 
 	<link rel="stylesheet" href="css/flaticon.css">
 	<link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .search-container input {
+            width: 0;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            transition: width 0.3s ease;
+            opacity: 0;
+        }
+        .search-container input:focus {
+            width: 300px;
+            opacity: 1;
+        }
+        .search-icon {
+            cursor: pointer;
+            background-color: #e0cece;
+            border: 1px solid #141313;
+            border-radius: 50%;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        .search-icon:hover {
+            background-color: #ea650c;
+        }
+        .results {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        .results li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .results img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+    </style>
 </head>
 
 
@@ -146,6 +199,62 @@
 			</div>
 		</div>
 	</div>
+
+    <div class="search-container">
+        <input type="text" id="searchBar" placeholder="Search products..." onkeyup="searchProducts()">
+    </div>
+    <ul class="results" id="results"></ul>
+
+    <script>
+        const products = [
+            {
+                name: "Winter Cherry - Ashwagandha (अश्वगंधा)",
+                image: "/images/ayurvedic/ashwagandha.jpg",
+                link: "/products/product-single.html"
+            },
+            {
+                name: "Arjuna Bark - Arjun Chaal (अर्जुन छाल)",
+                image: "/images/ayurvedic/arjunbark.jpg",
+                link: "/products/arjuna_bark.html"
+            },
+            {
+                name: "Wild Asparagus - Shatavari (शतावरी)",
+                image: "/images/ayurvedic/shatavri.jpg",
+                link: "/products/shatavari.html"
+            }
+        ];
+
+        function toggleSearch() {
+            const searchBar = document.getElementById('searchBar');
+            searchBar.focus();
+        }
+
+        function searchProducts() {
+            const query = document.getElementById('searchBar').value.toLowerCase();
+            const resultsContainer = document.getElementById('results');
+
+            // Clear previous results
+            resultsContainer.innerHTML = '';
+
+            // Filter and display products
+            products
+                .filter(product => product.name.toLowerCase().includes(query))
+                .forEach(product => {
+                    const li = document.createElement('li');
+                    const img = document.createElement('img');
+                    img.src = product.image;
+                    img.alt = product.name;
+
+                    const link = document.createElement('a');
+                    link.href = product.link;
+                    link.textContent = product.name;
+
+                    li.appendChild(img);
+                    li.appendChild(link);
+                    resultsContainer.appendChild(li);
+                });
+        }
+    </script>
 	
     <!-- OUR SERVICES Section -->
 	 
