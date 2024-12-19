@@ -151,7 +151,7 @@
 					<div id="productCarousel" class="carousel slide" data-ride="carousel">
 						<div class="carousel-inner">
 							<div class="carousel-item active">
-								<img src="images/prod-1.jpg" class="d-block w-100 img-fluid" alt="Image 1">
+								<img src="/images/ayurvedic/ashwagandha.jpg" class="d-block w-100 img-fluid" alt="Image 1">
 							</div>
 							<div class="carousel-item">
 								<img src="images/prod-2.jpg" class="d-block w-100 img-fluid" alt="Image 2">
@@ -176,20 +176,40 @@
 					<h3>Bacardi 151 Degree</h3>
 					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
 	
+					<!-- Quantity Selection -->
+					<div class="quantity-selection mb-4">
+						<h5>Select Quantity</h5>
+						<div>
+							<label>
+								<input type="checkbox" id="powderCheckbox" value="Powder"> Powder
+							</label>
+							<input type="number" id="powderQuantity" class="form-control mb-2" value="0" min="0" disabled>
+							<p>Converted Weight: <span id="powderConvertedWeight">0 grams</span></p>
+						</div>
+	
+						<div>
+							<label>
+								<input type="checkbox" id="rawCheckbox" value="Raw"> Raw
+							</label>
+							<input type="number" id="rawQuantity" class="form-control mb-2" value="0" min="0" disabled>
+							<p>Converted Weight: <span id="rawConvertedWeight">0 grams</span></p>
+						</div>
+					</div>
+	
 					<!-- Buttons -->
 					<div class="button-container">
 						<div class="buy-now-button">
 							<div class="button-main">Buy Now</div>
 							<div class="dynamic-icons">
-								<a href="https://wa.me/yourphonenumber" target="_blank" class="icon whatsapp-icon">
+								<a id="whatsappButton" href="#" target="_blank" class="icon whatsapp-icon">
 									<i class="fa fa-whatsapp"></i> WhatsApp
 								</a>
-								<a href="mailto:your-email@example.com" target="_blank" class="icon email-icon">
+								<a id="emailButton" href="#" target="_blank" class="icon email-icon">
 									<i class="fa fa-envelope"></i> Email
 								</a>
 							</div>
 						</div>
-						<div class="add-to-cart-button">
+						<div class="add-to-cart-button mt-3">
 							<div class="button-main">Add to Cart</div>
 						</div>
 					</div>
@@ -210,39 +230,113 @@
 		</div>
 	</section>
 	
+	<script>
+		// Enable or disable quantity inputs based on checkbox selection
+		document.getElementById('powderCheckbox').addEventListener('change', function () {
+			document.getElementById('powderQuantity').disabled = !this.checked;
+			updatePretext();
+		});
+	
+		document.getElementById('rawCheckbox').addEventListener('change', function () {
+			document.getElementById('rawQuantity').disabled = !this.checked;
+			updatePretext();
+		});
+	
+		// Convert weight to appropriate unit
+		function convertWeight(valueInGrams) {
+			if (valueInGrams >= 100000) {
+				return `${valueInGrams / 100000} quintal(s)`;
+			} else if (valueInGrams >= 1000) {
+				return `${valueInGrams / 1000} kg(s)`;
+			} else {
+				return `${valueInGrams} grams`;
+			}
+		}
+	
+		// Update pretext message for WhatsApp and Email
+		function updatePretext() {
+			const powderCheckbox = document.getElementById('powderCheckbox').checked;
+			const rawCheckbox = document.getElementById('rawCheckbox').checked;
+			const powderQuantity = document.getElementById('powderQuantity').value;
+			const rawQuantity = document.getElementById('rawQuantity').value;
+			const powderConvertedWeight = convertWeight(powderQuantity);
+			const rawConvertedWeight = convertWeight(rawQuantity);
+	
+			let message = 'I am interested in purchasing:';
+			if (powderCheckbox) {
+				message += `\n- Powder: ${powderConvertedWeight}`;
+			}
+			if (rawCheckbox) {
+				message += `\n- Raw: ${rawConvertedWeight}`;
+			}
+	
+			const whatsappLink = `https://wa.me/7984371588?text=${encodeURIComponent(message)}`;
+			const emailLink = `mailto:your-dolatramstored@gmail.com?subject=Quantity Inquiry&body=${encodeURIComponent(message)}`;
+	
+			document.getElementById('whatsappButton').href = whatsappLink;
+			document.getElementById('emailButton').href = emailLink;
+		}
+	
+		// Event listeners for quantity inputs
+		document.getElementById('powderQuantity').addEventListener('input', function () {
+			const weight = this.value;
+			document.getElementById('powderConvertedWeight').textContent = convertWeight(weight);
+			updatePretext();
+		});
+	
+		document.getElementById('rawQuantity').addEventListener('input', function () {
+			const weight = this.value;
+			document.getElementById('rawConvertedWeight').textContent = convertWeight(weight);
+			updatePretext();
+		});
+	
+		// Initialize links
+		updatePretext();
+	</script>
+	
+	
 	<style>
-		/* Buy Now Button with Integrated Icons */
-		.buy-now-button {
+		body {
+			background-color: #f9f5f0; /* Light beige background */
+			color: #4a3f35; /* Dark brown text */
+			font-family: 'Arial', sans-serif;
+		}
+	
+		.quantity-selection label {
+			font-weight: bold;
+			margin-right: 10px;
+		}
+		.quantity-selection input[type="number"] {
+			width: 100px;
+			display: inline-block;
+			margin-left: 10px;
+		}
+	
+		.button-container {
+			display: flex;
+			flex-direction: column;
+			align-items: start;
+		}
+	
+		.buy-now-button,
+		.add-to-cart-button {
 			position: relative;
 			display: inline-block;
-			width: 200px;
-			height: 50px;
-			background: #007bff;
+			width: 220px;
+			height: 60px;
+			background: #4a3f35; /* Dark brown */
 			color: #fff;
 			font-size: 18px;
 			font-weight: bold;
 			text-align: center;
-			line-height: 50px;
-			border-radius: 5px;
-			overflow: hidden;
+			line-height: 60px;
+			border-radius: 8px;
+			margin-top: 10px;
 			transition: all 0.3s ease;
 		}
 	
 		.buy-now-button:hover {
-			background: #0056b3; /* Darker blue on hover */
-		}
-	
-		.button-main {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			z-index: 1;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			pointer-events: none;
+			background: #3b3229; /* Darker brown */
 		}
 	
 		.dynamic-icons {
@@ -254,7 +348,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: space-around;
-			background: #0056b3; /* Background for hover state */
+			background: #3b3229; /* Darker brown */
 			z-index: 2;
 			opacity: 0;
 			pointer-events: none;
@@ -279,42 +373,12 @@
 			font-size: 20px;
 		}
 	
-		.whatsapp-icon {
-			color: #25d366; /* WhatsApp green */
-		}
-	
-		.email-icon {
-			color: #fff; /* Email white */
-		}
-	
-		/* Add to Cart Button */
-		.add-to-cart-button {
-			position: relative;
-			display: inline-block;
-			width: 200px;
-			height: 50px;
-			background: #28a745; /* Green color for Add to Cart */
-			color: #fff;
-			font-size: 18px;
-			font-weight: bold;
-			text-align: center;
-			line-height: 50px;
-			border-radius: 5px;
-			margin-top: 10px;
-			transition: all 0.3s ease;
-		}
-	
-		.add-to-cart-button:hover {
-			background: #218838; /* Darker green on hover */
-		}
-	
-		/* Description and Uses Box */
 		.description-box,
 		.uses-box {
 			padding: 15px;
-			border: 1px solid #ddd;
+			border: 1px solid #e0dcd5; /* Light brown border */
 			border-radius: 5px;
-			background: #f8f9fa; /* Light gray background */
+			background: #fff; /* White background */
 			box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 		}
 	
@@ -330,14 +394,9 @@
 			font-size: 14px;
 			margin: 0;
 		}
-	
-		/* Align buttons */
-		.button-container {
-			display: flex;
-			flex-direction: column;
-			gap: 10px;
-		}
 	</style>
+	
+	
 	
 	
 
