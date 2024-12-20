@@ -224,3 +224,89 @@
 
 })(jQuery);
 
+document.addEventListener("DOMContentLoaded", function () {
+    const products = document.querySelectorAll(".product");
+
+    products.forEach((product) => {
+        const toggleButton = product.querySelector(".toggle-selection");
+        const selectionBox = product.querySelector(".type-section");
+        const checkboxes = product.querySelectorAll(".custom-checkbox input");
+        const whatsappButton = product.querySelector(".whatsapp-button");
+        const emailButton = product.querySelector(".email-button");
+
+        toggleButton.addEventListener("click", function () {
+            if (selectionBox.style.display === "none" || selectionBox.style.display === "") {
+                selectionBox.style.display = "block";
+                toggleButton.innerHTML = "&#9650; Hide Quantity";
+            } else {
+                selectionBox.style.display = "none";
+                toggleButton.innerHTML = "&#9660; Select Quantity";
+            }
+        });
+
+        checkboxes.forEach((checkbox) => {
+            const type = checkbox.id;
+            const container = product.querySelector(`#${type}-quantity-container`);
+            const display = product.querySelector(`#${type}-quantity-display`);
+
+            checkbox.addEventListener("change", function () {
+                if (checkbox.checked) {
+                    container.style.display = "block";
+                } else {
+                    container.style.display = "none";
+                    updateDisplay(display, "0 grams");
+                }
+            });
+
+            const input = product.querySelector(`#${type}-quantity`);
+            input.addEventListener("input", function () {
+                const value = parseInt(input.value);
+                let convertedValue = "0 grams";
+
+                if (value > 0) {
+                    if (value >= 100000) {
+                        convertedValue = (value / 100000).toFixed(2) + " quintal";
+                    } else if (value >= 1000) {
+                        convertedValue = (value / 1000).toFixed(2) + " kg";
+                    } else {
+                        convertedValue = value + " grams";
+                    }
+                }
+
+                updateDisplay(display, convertedValue);
+            });
+        });
+
+        function updateDisplay(display, text) {
+            display.textContent = "Converted Weight: " + text;
+        }
+
+        function generateMessage() {
+            const productName = product.dataset.name;
+            let message = `I am interested in purchasing the following product:\n\nProduct: ${productName}\n`;
+
+            checkboxes.forEach((checkbox) => {
+                if (checkbox.checked) {
+                    const type = checkbox.id;
+                    const display = product.querySelector(`#${type}-quantity-display`).textContent.replace("Converted Weight: ", "");
+                    message += `- ${type.charAt(0).toUpperCase() + type.slice(1)} Quantity: ${display}\n`;
+                }
+            });
+
+            return encodeURIComponent(message.trim());
+        }
+
+        whatsappButton.addEventListener("click", function () {
+            const phoneNumber = "7984371588";
+            const message = generateMessage();
+            whatsappButton.href = `https://wa.me/${phoneNumber}?text=${message}`;
+        });
+
+        emailButton.addEventListener("click", function () {
+            const email = "dolatramstores@gmail.com";
+            const subject = "Product Inquiry";
+            const body = generateMessage();
+            emailButton.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${body}`;
+        });
+    });
+});
