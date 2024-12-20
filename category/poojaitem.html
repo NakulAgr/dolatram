@@ -176,83 +176,107 @@
 									<h2>abil</h2>
 									<p class="mb-0">अबील</p>
 
-									<div class="quantity-section mt-3">
-										<label for="quantity-nos" class="form-label">Quantity in Nos:</label>
-										<input type="number" id="quantity-nos" name="quantity-nos" value="0" min="0"
-											placeholder="Enter quantity" class="form-control mb-2" />
-									
-										<p>Selected Nos: <span id="nos-display">0</span></p>
-									</div>
-						
-									<!-- WhatsApp and Email Buttons Section -->
-									<div class="d-flex justify-content-center mt-3">
-										<!-- WhatsApp Circular Button -->
-										<a id="whatsapp-link" href="#" target="_blank"
-											class="d-flex align-items-center justify-content-center mx-2" style="
-										  width: 30px;
-										  height: 30px;
-										  border-radius: 50%;
-										  background-color: #25d366;
+									<div class="toggle-container text-center mt-2">
+									<button id="toggle-selection" class="btn btn-primary" style="
+										border-radius: 5px;
+										padding: 8px 16px;
+										font-size: 16px;
 										">
-											<img src="https://img.icons8.com/ios-filled/20/ffffff/whatsapp.png"
-												alt="WhatsApp" style="width: 16px; height: 16px" />
+										&#9660; Select Quantity
+									</button>
+									</div>
+
+									<!-- Quantity Selection Box -->
+									<div id="selection-box" class="quantity-section mt-3" style="
+										display: none;
+										text-align: left;
+										padding: 10px;
+										border: 1px solid #ddd;
+										border-radius: 5px;
+										background-color: #f9f9f9;
+										max-width: 200px;
+										margin: 10px auto;
+									">
+									<label for="quantity-nos" class="form-label" style="font-size: 14px;">Quantity in Nos:</label>
+									<input type="number" id="quantity-nos" name="quantity-nos" value="0" min="0" placeholder="Enter quantity" class="form-control mb-2" style="font-size: 14px;" />
+									<p style="font-size: 14px;">Selected Nos: <span id="nos-display">0</span></p>
+									<div class="d-flex justify-content-center mt-2">
+										<!-- WhatsApp Circular Button -->
+										<a id="whatsapp-link" href="#" target="_blank" class="d-flex align-items-center justify-content-center mx-2" style="
+											width: 30px;
+											height: 30px;
+											border-radius: 50%;
+											background-color: #25d366;
+										">
+										<img src="https://img.icons8.com/ios-filled/20/ffffff/whatsapp.png" alt="WhatsApp" style="width: 16px; height: 16px;" />
 										</a>
 										<!-- Email Circular Button -->
-										<a id="email-link" href="#"
-											class="d-flex align-items-center justify-content-center mx-2" style="
-										  width: 30px;
-										  height: 30px;
-										  border-radius: 50%;
-										  background-color: #ea4335;
+										<a id="email-link" href="#" class="d-flex align-items-center justify-content-center mx-2" style="
+											width: 30px;
+											height: 30px;
+											border-radius: 50%;
+											background-color: #ea4335;
 										">
-											<img src="https://img.icons8.com/ios-filled/20/ffffff/new-post.png"
-												alt="Email" style="width: 16px; height: 16px" />
+										<img src="https://img.icons8.com/ios-filled/20/ffffff/new-post.png" alt="Email" style="width: 16px; height: 16px;" />
 										</a>
 									</div>
+									</div>
+
+									<script>
+									// Toggle the visibility of the selection box
+									document.getElementById("toggle-selection").addEventListener("click", function () {
+										const selectionBox = document.getElementById("selection-box");
+										if (selectionBox.style.display === "none" || selectionBox.style.display === "") {
+										selectionBox.style.display = "block"; // Show selection box
+										this.innerHTML = "&#9650; Hide Quantity"; // Change symbol to "up arrow" and text
+										} else {
+										selectionBox.style.display = "none"; // Hide selection box
+										this.innerHTML = "&#9660; Select Quantity"; // Change symbol to "down arrow" and text
+										}
+									});
+
+									// DOM Elements
+									const quantityNos = document.getElementById("quantity-nos");
+									const nosDisplay = document.getElementById("nos-display");
+									const whatsappLink = document.getElementById("whatsapp-link");
+									const emailLink = document.getElementById("email-link");
+									const productName = "abil-अबील";
+
+									// Function to update the displayed quantity
+									function updateDisplay(value) {
+										nosDisplay.textContent = value;
+									}
+
+									// Function to generate the message
+									function generateMessage(quantity) {
+										return `Hello, I would like to purchase the following product:\n\nProduct: ${productName}\nQuantity: ${quantity} nos.`;
+									}
+
+									// Function to update the WhatsApp and Email links
+									function updateLinks(quantity) {
+										const message = generateMessage(quantity);
+
+										// Update WhatsApp link
+										whatsappLink.href = `https://wa.me/7984371588?text=${encodeURIComponent(message)}`;
+
+										// Update Email link
+										emailLink.href = `mailto:dolatramstores@gmail.com?subject=Product%20Inquiry&body=${encodeURIComponent(message)}`;
+									}
+
+									// Event Listener for quantity input
+									quantityNos.addEventListener("input", function () {
+										const value = parseInt(this.value, 10) || 0; // Default to 0 if invalid
+										updateDisplay(value);
+										updateLinks(value);
+									});
+
+									// Initialize with default value
+									updateDisplay(0);
+									updateLinks(0);
+									</script>
 								</div>
 							</div>
 						</div>
-						
-						<script>
-							// DOM Elements
-							const quantityNos = document.getElementById("quantity-nos");
-							const nosDisplay = document.getElementById("nos-display");
-							const whatsappLink = document.getElementById("whatsapp-link");
-							const emailLink = document.getElementById("email-link");
-							const productName = "Abil - Abil (अबीर)";
-						
-							// Function to update the displayed quantity
-							function updateDisplay(value) {
-								nosDisplay.textContent = value;
-							}
-						
-							// Function to generate the message
-							function generateMessage(quantity) {
-								return `Hello, I would like to purchase the following product:\n\nProduct: ${productName}\nQuantity: ${quantity} nos.`;
-							}
-						
-							// Function to update the WhatsApp and Email links
-							function updateLinks(quantity) {
-								const message = generateMessage(quantity);
-						
-								// Update WhatsApp link
-								whatsappLink.href = `https://wa.me/7984371588?text=${encodeURIComponent(message)}`;
-						
-								// Update Email link
-								emailLink.href = `mailto:dolatramstores@gmail.com?subject=Product%20Inquiry&body=${encodeURIComponent(message)}`;
-							}
-						
-							// Event Listener for quantity input
-							quantityNos.addEventListener("input", function () {
-								const value = parseInt(this.value, 10) || 0; // Default to 0 if invalid
-								updateDisplay(value);
-								updateLinks(value);
-							});
-						
-							// Initialize with default value
-							updateDisplay(0);
-							updateLinks(0);
-						</script>
 
 						<div class="col-md-4 d-flex">
 							<div class="product ftco-animate">
