@@ -225,88 +225,97 @@
 })(jQuery);
 
 document.addEventListener("DOMContentLoaded", function () {
-    const products = document.querySelectorAll(".product");
-
-    products.forEach((product) => {
-        const toggleButton = product.querySelector(".toggle-selection");
-        const selectionBox = product.querySelector(".type-section");
-        const checkboxes = product.querySelectorAll(".custom-checkbox input");
-        const whatsappButton = product.querySelector(".whatsapp-button");
-        const emailButton = product.querySelector(".email-button");
-
-        toggleButton.addEventListener("click", function () {
+    // Handle toggle buttons
+    document.querySelectorAll(".toggle-selection").forEach((button) => {
+        button.addEventListener("click", function () {
+            const selectionBox = this.closest(".product").querySelector(".type-section");
             if (selectionBox.style.display === "none" || selectionBox.style.display === "") {
-                selectionBox.style.display = "block";
-                toggleButton.innerHTML = "&#9650; Hide Quantity";
+                selectionBox.style.display = "block"; // Show selection box
+                this.innerHTML = "&#9650; Hide Quantity"; // Change symbol to "up arrow" and text
             } else {
-                selectionBox.style.display = "none";
-                toggleButton.innerHTML = "&#9660; Select Quantity";
+                selectionBox.style.display = "none"; // Hide selection box
+                this.innerHTML = "&#9660; Select Quantity"; // Change symbol to "down arrow" and text
+            }
+        });
+    });
+
+    // Handle checkboxes and quantity inputs
+    document.querySelectorAll(".custom-checkbox input").forEach((checkbox) => {
+        checkbox.addEventListener("change", function () {
+            const container = this.closest("label").nextElementSibling;
+            if (this.checked) {
+                container.style.display = "block"; // Show quantity input
+            } else {
+                container.style.display = "none"; // Hide quantity input
+                updateDisplay(container.querySelector(".converted-display"), "0 grams"); // Reset display
+            }
+        });
+    });
+
+    // Convert quantities
+    document.querySelectorAll(".quantity-input").forEach((input) => {
+        input.addEventListener("input", function () {
+            const value = parseInt(this.value);
+            const display = this.nextElementSibling;
+
+            if (isNaN(value) || value <= 0) {
+                updateDisplay(display, "0 grams");
+                return;
+            }
+
+            let convertedValue;
+            if (value >= 100000) {
+                convertedValue = (value / 100000).toFixed(2) + " quintal";
+            } else if (value >= 1000) {
+                convertedValue = (value / 1000).toFixed(2) + " kg";
+            } else {
+                convertedValue = value + " grams";
+            }
+
+            updateDisplay(display, convertedValue);
+        });
+    });
+
+    // WhatsApp and Email Button Event Listeners
+    document.querySelectorAll(".whatsapp-button").forEach((button) => {
+        button.addEventListener("click", function () {
+            const product = this.closest(".product");
+            const message = generateMessage(product);
+            const phoneNumber = "7984371588"; // Your WhatsApp number
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+            this.href = whatsappUrl;
+        });
+    });
+
+    document.querySelectorAll(".email-button").forEach((button) => {
+        button.addEventListener("click", function () {
+            const product = this.closest(".product");
+            const message = generateMessage(product);
+            const email = "dolatramstores@gmail.com"; // Your email
+            const subject = "Product Inquiry";
+            const emailUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${message}`;
+            this.href = emailUrl;
+        });
+    });
+
+    // Helper function to update display
+    function updateDisplay(element, text) {
+        element.textContent = "Converted Weight: " + text;
+    }
+
+    // Generate message based on product
+    function generateMessage(productElement) {
+        const productName = productElement.querySelector("h2").textContent.trim();
+        let message = `I am interested in purchasing the following product:\n\nProduct: ${productName}\n`;
+
+        productElement.querySelectorAll(".custom-checkbox input").forEach((checkbox) => {
+            if (checkbox.checked) {
+                const quantityInput = checkbox.closest("label").nextElementSibling.querySelector("input");
+                const converted = quantityInput.nextElementSibling.textContent.replace("Converted Weight: ", "");
+                message += `- ${checkbox.value.charAt(0).toUpperCase() + checkbox.value.slice(1)} Quantity: ${converted}\n`;
             }
         });
 
-        checkboxes.forEach((checkbox) => {
-            const type = checkbox.id;
-            const container = product.querySelector(`#${type}-quantity-container`);
-            const display = product.querySelector(`#${type}-quantity-display`);
-
-            checkbox.addEventListener("change", function () {
-                if (checkbox.checked) {
-                    container.style.display = "block";
-                } else {
-                    container.style.display = "none";
-                    updateDisplay(display, "0 grams");
-                }
-            });
-
-            const input = product.querySelector(`#${type}-quantity`);
-            input.addEventListener("input", function () {
-                const value = parseInt(input.value);
-                let convertedValue = "0 grams";
-
-                if (value > 0) {
-                    if (value >= 100000) {
-                        convertedValue = (value / 100000).toFixed(2) + " quintal";
-                    } else if (value >= 1000) {
-                        convertedValue = (value / 1000).toFixed(2) + " kg";
-                    } else {
-                        convertedValue = value + " grams";
-                    }
-                }
-
-                updateDisplay(display, convertedValue);
-            });
-        });
-
-        function updateDisplay(display, text) {
-            display.textContent = "Converted Weight: " + text;
-        }
-
-        function generateMessage() {
-            const productName = product.dataset.name;
-            let message = `I am interested in purchasing the following product:\n\nProduct: ${productName}\n`;
-
-            checkboxes.forEach((checkbox) => {
-                if (checkbox.checked) {
-                    const type = checkbox.id;
-                    const display = product.querySelector(`#${type}-quantity-display`).textContent.replace("Converted Weight: ", "");
-                    message += `- ${type.charAt(0).toUpperCase() + type.slice(1)} Quantity: ${display}\n`;
-                }
-            });
-
-            return encodeURIComponent(message.trim());
-        }
-
-        whatsappButton.addEventListener("click", function () {
-            const phoneNumber = "7984371588";
-            const message = generateMessage();
-            whatsappButton.href = `https://wa.me/${phoneNumber}?text=${message}`;
-        });
-
-        emailButton.addEventListener("click", function () {
-            const email = "dolatramstores@gmail.com";
-            const subject = "Product Inquiry";
-            const body = generateMessage();
-            emailButton.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${body}`;
-        });
-    });
+        return encodeURIComponent(message.trim());
+    }
 });
