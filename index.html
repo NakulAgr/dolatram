@@ -189,6 +189,7 @@
         const muteButton = document.getElementById('mute-unmute-btn');
         const audioIcon = document.getElementById('audio-icon');
 
+        // Mute/Unmute button toggle
         muteButton.addEventListener('click', () => {
             if (video.muted) {
                 video.muted = false;
@@ -200,6 +201,20 @@
                 audioIcon.classList.add('fa-volume-mute');
             }
         });
+
+        // Intersection Observer to auto-mute when the video is out of view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    video.muted = true;
+                    audioIcon.classList.remove('fa-volume-up');
+                    audioIcon.classList.add('fa-volume-mute');
+                }
+            });
+        }, { threshold: 0.25 });
+
+        // Observe the video element
+        observer.observe(video);
     </script>
 
 
