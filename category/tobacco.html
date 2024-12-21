@@ -23,6 +23,39 @@
 
 	<link rel="stylesheet" href="/css/flaticon.css">
 	<link rel="stylesheet" href="/css/style.css">
+	<style>
+		.custom-marquee {
+		  position: relative;
+		  width: 100vw;
+		  max-width: 100%;
+		  height: 43px;
+		  overflow-x: hidden;
+		  background: #C00000; /* Default background color */
+		  color: #000000; /* Default text color */
+		}
+		.custom-marquee a {
+		  color: #000000;
+		  text-decoration: none;
+		}
+		.custom-marquee .track {
+			position: absolute;
+			bottom: 6px;
+			white-space: nowrap;
+			will-change: transform;
+			animation: marquee 7s linear infinite;
+		}
+		.custom-marquee .content {
+		  margin-left: 40px;
+		}
+		@keyframes marquee {
+		  from {
+			transform: translateX(0);
+		  }
+		  to {
+			transform: translateX(-20%);
+		  }
+		}
+	  </style>
 </head>
 
 <body>
@@ -139,6 +172,32 @@
 			</div>
 		</div>
 	</section>
+
+	<div class="custom-marquee" role="region">
+		<a href="#">
+		  <div class="track">
+			<span class="content marquee-text"><font size="4px">⚠ Tobacco harms health; quit now to live longer ⚠</font></span>
+			<span class="content marquee-text"><font size="4px">⚠ Tobacco harms health; quit now to live longer ⚠</font></span>
+			<span class="content marquee-text"><font size="4px">⚠ Tobacco harms health; quit now to live longer ⚠</font></span>
+			<span class="content marquee-text"><font size="4px">⚠ Tobacco harms health; quit now to live longer ⚠</font></span>
+			<span class="content marquee-text"><font size="4px">⚠ Tobacco harms health; quit now to live longer ⚠</font></span>
+			<span class="content marquee-text"><font size="4px">⚠ Tobacco harms health; quit now to live longer ⚠</font></span>
+			<span class="content marquee-text"><font size="4px">⚠ Tobacco harms health; quit now to live longer ⚠</font></span>
+			<span class="content marquee-text"><font size="4px">⚠ Tobacco harms health; quit now to live longer ⚠</font></span>
+			<span class="content marquee-text"><font size="4px">⚠ Tobacco harms health; quit now to live longer ⚠</font></span>
+			<span class="content marquee-text"><font size="4px">☠ Tobacco harms health; quit now to live longer ☠</font></span>
+		  </div>
+		</a>
+	  </div>
+	
+	  <script>
+		var marquees = document.getElementsByClassName("marquee-text");
+		for (let i = 0; i < marquees.length; i++) {
+		  let str = marquees.item(i).innerHTML;
+		  let improvedText = str.replaceAll("|", "            ");
+		  marquees.item(i).innerHTML = improvedText;
+		}
+	  </script>
 
 	<!--Product Section-->
 	<section class="ftco-section">
